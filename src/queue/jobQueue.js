@@ -1,5 +1,6 @@
 import { client } from "./redisClient.js";
 
+
 const QUEUE_NAME = "job:queue";
 
 export const pushJob = async (jobData) => {
@@ -13,3 +14,10 @@ export const getJob = async () => {
   //   key is the queue name ("job:queue"), element is the actual job string. Think of it like — brPop tells you which list it popped from and what it popped.
   return JSON.parse(result.element);
 };
+
+export const updateJobStatus=async(id,status)=>{
+  await client.hSet(`job:${id}`,"status",status);
+}
+export const getStatus=async(id)=>{
+  return await client.hGetAll(`job:${id}`,"status");
+}
