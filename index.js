@@ -5,9 +5,5 @@ const startServer = async () => {
   await client.connect();
   console.log("redis is connected");
   connectServer();
-
 };
-
-
-
 startServer();

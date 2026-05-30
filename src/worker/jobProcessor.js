@@ -1,6 +1,6 @@
 export const processJob = async (job) => {
   const type = job?.payload?.type;
-  if (type == "send_mail") {
+  if (type == "send_email") {
     console.log("send mail is run");
   } else if (type == "send_sms") {
     console.log("send sms is run");
